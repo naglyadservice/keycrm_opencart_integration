@@ -72,32 +72,6 @@ def fetch_api_offers() -> list[dict]:
 
     return all_data
 
-
-def update_product(cursor, model: str, quantity: int, price: float):
-    """
-    Обновляет количество и цену в таблице oc_product.
-    """
-    sql = """
-    UPDATE oc_product 
-    SET quantity = %s, price = %s 
-    WHERE model = %s
-    """
-    cursor.execute(sql, (quantity, price, model))
-
-
-def update_option_quantity(cursor, model: str, quantity: int):
-    """
-    Обновляет количество в таблице oc_product_option_value.
-    Используется столбец model вместо sku.
-    """
-    sql = """
-    UPDATE oc_product_option_value 
-    SET quantity = %s
-    WHERE model = %s
-    """
-    cursor.execute(sql, (quantity, model))
-
-
 def sync_products(cursor, api_products):
     """
     Синхронизация таблицы oc_product с данными API.
