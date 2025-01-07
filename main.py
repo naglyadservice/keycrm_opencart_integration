@@ -1,14 +1,17 @@
 import time
 import requests
 import mysql.connector
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="je497554.mysql.tools",
-        user="je497554_db",
-        password="F7zrka64",
-        database="je497554_db"
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
     )
 
 
@@ -16,10 +19,10 @@ def fetch_api_products() -> list[dict]:
     """
     Получение данных о продуктах с основного эндпоинта.
     """
-    url = "https://openapi.keycrm.app/v1/products"
+    url = os.getenv("API_URL_PRODUCTS")
     headers = {
         "accept": "application/json",
-        "authorization": "Bearer OGI1MTcxMzRmY2FkZTZlZjgwNTUxMDVjNjdlNDE3OTlhMzFhOGU5NA"
+        "authorization": f"Bearer {os.getenv('API_KEY')}"
     }
     all_data = []
     page = 1
