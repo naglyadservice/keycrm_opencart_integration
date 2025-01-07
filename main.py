@@ -48,10 +48,10 @@ def fetch_api_offers() -> list[dict]:
     """
     Получение данных об офферах с эндпоинта /offers.
     """
-    url = "https://openapi.keycrm.app/v1/offers"
+    url = os.getenv("API_URL_OFFERS")
     headers = {
         "accept": "application/json",
-        "authorization": "Bearer OGI1MTcxMzRmY2FkZTZlZjgwNTUxMDVjNjdlNDE3OTlhMzFhOGU5NA"
+        "authorization": f"Bearer {os.getenv('API_KEY')}"
     }
     all_data = []
     page = 1
