@@ -99,7 +99,7 @@ def sync_products(cursor, api_products):
                 #    quantity=product["quantity"],
                 #    price=product_price
                 #)
-
+                time.sleep(1)
 
 def sync_offers(cursor, api_offers):
     """
@@ -124,7 +124,7 @@ def sync_offers(cursor, api_offers):
                 #    model=db_option["model"],
                 #    quantity=offer["quantity"]
                 #)
-
+                time.sleep(1)
 
 def main():
     conn = get_db_connection()
