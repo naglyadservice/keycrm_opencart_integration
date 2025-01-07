@@ -170,5 +170,11 @@ def main():
     conn.close()
 
 
+def main_loop():
+    while True:
+        main()
+        print("Sleeping for 3600 seconds...")
+        time.sleep(3600)  # Интервал в 3600 секунд
+
 if __name__ == "__main__":
-    main()
+    main_loop()
