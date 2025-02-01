@@ -4,6 +4,8 @@ services:
   script:
     container_name: keycrm-opencart-sync
     build: .
+    environment:
+      - PYTHONUNBUFFERED=1
     restart: unless-stopped
     env_file: .env
     logging:
